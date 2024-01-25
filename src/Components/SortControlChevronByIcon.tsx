@@ -22,7 +22,7 @@ const SortControlChevronByIcon: React.FC<SortControlChevronProps> = ({
   return (
     <div
       className={classNames(
-        "inline-flex flex-col items-center justify-center space-y-2 p-4 border border-gray-800 rounded",
+        "inline-flex flex-col items-center justify-center space-y-0 p-4 border border-gray-800 rounded",
         "cursor-pointer hover:bg-gray-100",
         className
       )}
