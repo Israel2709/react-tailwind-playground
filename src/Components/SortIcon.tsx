@@ -14,7 +14,7 @@ const SortIcon: React.FC<SortIconProps> = ({
   handler,
   sortOption,
 }) => {
-  const iconClassnames = classNames("text-xl text-gray-400", {
+  const iconClassnames = classNames("text-xl", {
     "text-gray-400": !active,
     "text-blue-800": active,
   });
