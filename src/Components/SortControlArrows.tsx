@@ -26,7 +26,10 @@ const SortControlArrows: React.FC<SortControlChevronProps> = ({
     });
   };
 
-  const iconClassnames = "text-xl text-gray-400";
+  const iconClassnames = classNames("text-xl", {
+    "text-gray-400": sortOption === "default",
+    "text-blue-400": sortOption !== "default",
+  });
 
   return (
     <div
@@ -37,16 +40,8 @@ const SortControlArrows: React.FC<SortControlChevronProps> = ({
         className
       )}
     >
-      <FiArrowUp
-        className={classNames(iconClassnames, {
-          "text-blue-800": sortOption === "asc",
-        })}
-      />
-      <FiArrowDown
-        className={classNames(iconClassnames, {
-          "text-blue-800": sortOption === "desc",
-        })}
-      />
+      <FiArrowUp className={iconClassnames} />
+      <FiArrowDown className={iconClassnames} />
     </div>
   );
 };
