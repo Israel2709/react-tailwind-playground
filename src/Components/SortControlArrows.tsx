@@ -28,7 +28,6 @@ const SortControlArrows: React.FC<SortControlChevronProps> = ({
 
   const iconClassnames = classNames("text-xl", {
     "text-gray-400": sortOption === "default",
-    "text-blue-400": sortOption !== "default",
   });
 
   return (

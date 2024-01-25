@@ -1,28 +1,23 @@
 import React, { useState } from "react";
 import { FiChevronUp, FiChevronDown } from "react-icons/fi";
 import classNames from "classnames";
+import SortIcon from "./SortIcon"; // Asegúrate de importar el nuevo componente SortIcon
 
 interface SortControlChevronProps {
   className?: string;
 }
 
-type SortOption = "default" | "asc" | "desc";
-
 const SortControlChevronByIcon: React.FC<SortControlChevronProps> = ({
   className,
 }) => {
-  const [sortOption, setSortOption] = useState<SortOption>("default");
+  const [sortOption, setSortOption] = useState("default");
 
-  const handleIconClick = (event: React.MouseEvent<SVGSVGElement>) => {
-    const sortingOption = event.currentTarget.dataset
-      .sortingOption as SortOption;
-    console.log(sortingOption);
-    setSortOption((prevOption) =>
-      prevOption === sortingOption ? "default" : sortingOption
+  const handleIconClick = (newSortingOption: string) => {
+    console.log(newSortingOption);
+    setSortOption(
+      sortOption !== newSortingOption ? newSortingOption : "default"
     );
   };
-
-  const iconClassnames = "text-xl text-gray-400";
 
   return (
     <div
@@ -32,19 +27,17 @@ const SortControlChevronByIcon: React.FC<SortControlChevronProps> = ({
         className
       )}
     >
-      <FiChevronUp
-        onClick={handleIconClick}
-        data-sorting-option="asc"
-        className={classNames(iconClassnames, {
-          "text-blue-800": sortOption === "asc",
-        })}
+      <SortIcon
+        active={sortOption === "asc"}
+        icon={FiChevronUp}
+        handler={handleIconClick}
+        sortOption="asc"
       />
-      <FiChevronDown
-        onClick={handleIconClick}
-        data-sorting-option="desc"
-        className={classNames(iconClassnames, {
-          "text-blue-800": sortOption === "desc",
-        })}
+      <SortIcon
+        active={sortOption === "desc"}
+        icon={FiChevronDown}
+        handler={handleIconClick}
+        sortOption="desc"
       />
     </div>
   );
